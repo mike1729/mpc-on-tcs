@@ -3,6 +3,13 @@ use std::marker::PhantomData;
 use std::pin::Pin;
 use std::task::{Context, Poll};
 
+/// The goal of this excercise is to implement a method `chan` returning a pair
+/// `(Sender, Receiver)` that is a version of `[tokio,sync]::mpcs::oneshot` channel
+/// in which the `Sender::send` method is also asynchronous and returns when a value that
+/// is sent is received by a corresponding receiver.
+/// Constraints: to get the full score, one cannot use any existing implementation of a
+/// channel. An implementation using a channel is worth half of the score.
+
 pub struct Sender<T> {
     marker: PhantomData<T>,
 }
