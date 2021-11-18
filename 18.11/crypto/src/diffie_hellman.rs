@@ -9,7 +9,7 @@ impl EncryptionPublicKey {
         Default::default()
     }
 
-    pub fn to_encryption_key(&self) -> EncryptionKey {
+    pub fn to_encryption_key(&self, _other: Self) -> EncryptionKey {
         Default::default()
     }
 }
