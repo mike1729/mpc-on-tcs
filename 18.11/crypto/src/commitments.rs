@@ -34,7 +34,7 @@ mod tests {
         let commitments = scalars.clone().map(Commitment::new);
         let product = Commitment::product(commitments);
 
-        assert!(product.verify_val(&scalars.fold(Scalar::one(), |a, b| a * b)));
+        assert!(product.verify_val(&scalars.fold(Scalar::zero(), |a, b| a + b)));
     }
 
     #[test]

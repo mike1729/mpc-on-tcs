@@ -85,6 +85,9 @@ impl KeyBox {
     }
 }
 
+// knots - other evalutaion points, i.e x_j=1...(n+1)
+// knot - our evalutation point
+// target - point at which we want to evalutate the interpolated polynomial
 fn _lagrange_coef(_knots: impl Iterator<Item = Scalar>, _knot: Scalar, _target: Scalar) -> Scalar {
     Default::default()
 }
