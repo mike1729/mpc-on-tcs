@@ -75,6 +75,8 @@ impl BGW {
 #[cfg(test)]
 mod tests {
 
+    use rayon::iter::{IntoParallelIterator, IntoParallelRefIterator, ParallelIterator};
+
     use super::*;
     const N_PARTIES: usize = 5;
     const THRESHOLD: usize = 2;
@@ -92,14 +94,14 @@ mod tests {
                 BGW::new(N_PARTIES, THRESHOLD, inputs, net.clone())
             })
             .collect::<Vec<_>>()
-            .into_iter()
+            .into_par_iter()
             .map(|bgw| bgw.setup(n_mul))
             .collect()
     }
 
     fn reveal_and_check(bgws: Vec<BGW>, val: u128) -> bool {
-        bgws.iter()
-            .take(THRESHOLD)
+        bgws[..THRESHOLD]
+            .par_iter()
             .map(|bgw| bgw.reveal("z"))
             .collect::<Vec<_>>()
             .into_iter()
