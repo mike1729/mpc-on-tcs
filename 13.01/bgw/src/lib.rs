@@ -114,7 +114,7 @@ mod tests {
         bgws.iter_mut()
             .take(THRESHOLD)
             .for_each(|bgw| bgw.add("x3", "x4", "z"));
-        assert!(reveal_and_check(bgws, 2));
+        assert!(reveal_and_check(bgws, 7));
     }
 
     #[test]
